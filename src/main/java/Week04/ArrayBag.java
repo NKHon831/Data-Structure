@@ -110,12 +110,12 @@ public  class ArrayBag<T> implements BagInterface<T>{
     public BagInterface<T> union(BagInterface<T> bag2){
         BagInterface<T> newBag=new ArrayBag();
         T[] tempArray=toArray();
-        for(int i=0;i<tempArray.length;i++){
-            newBag.add(tempArray[i]);
+        for (T tempArray1 : tempArray) {
+            newBag.add(tempArray1);
         }
         tempArray=bag2.toArray();
-        for(int i=0;i<tempArray.length;i++){
-            newBag.add(tempArray[i]);
+        for (T tempArray1 : tempArray) {
+            newBag.add(tempArray1);
         }
         return newBag;
         
@@ -125,16 +125,13 @@ public  class ArrayBag<T> implements BagInterface<T>{
     public BagInterface<T> intersection(BagInterface<T> bag2){
         BagInterface<T>newBag=new ArrayBag<>();
         T[] tempArray1=this.toArray();//this object toArray()
-        loop:
         for(int i=0;i<tempArray1.length;i++){
-            for(int a=i-1;a>=0;a--){
-             if(bag[i]==bag[a])
-                 continue loop;
-            }
+             if(newBag.contains(bag[i]))
+                 continue ;       
             if(bag2.contains(bag[i])){
                 int freq1=this.getFrequencyOf(bag[i]);
                 int freq2=bag2.getFrequencyOf(bag[i]);
-                for(int j=0;j<Math.abs(freq1-freq2);j++){
+                for(int j=0;j<Math.min(freq1,freq2);j++){
                     newBag.add(bag[i]);
                 }
             }
@@ -144,25 +141,16 @@ public  class ArrayBag<T> implements BagInterface<T>{
     
     @Override
     public BagInterface<T> difference(BagInterface<T> bag2){
-        BagInterface<T>newBag=new ArrayBag<>();
-        T[]array1=this.toArray();
-        T[]array2=bag2.toArray();
-        for(int i=0;i<this.getCurrentSize();i++){
-            for(int j=0;j<bag2.getCurrentSize();j++){
-                if(array1[i]==array2[j]){
-                    array1[i]=null;
-                    array2[j]=null;
-                    break;
-                }
-            }
+        BagInterface<T> newBag=new ArrayBag<>();
+        T[]temp1=toArray();
+        T[]temp2=bag2.toArray();
+        for(T i:temp1){
+            newBag.add(i);
         }
-        for(int i=0;i<array1.length;i++){
-            if(array1[i]!=null)
-                newBag.add(array1[i]);
+        for(T i:temp2){
+            if(newBag.contains(i))
+                newBag.remove(i);
         }
-
         return newBag;      
-    }
-    
-    
+    }   
 }
