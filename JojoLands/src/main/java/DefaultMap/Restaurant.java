@@ -34,7 +34,7 @@ public  class Restaurant<T extends Comparable<T>, N extends Comparable <N>> exte
         option.add(new OptionClass("View Sales Information"));
         option.add(new OptionClass("Milagro Man"));
         processingList((String)vertexInfo);
-    }
+    } 
     
     public Restaurant(T v , Vertex<T,N> w){
         super(v,w);
