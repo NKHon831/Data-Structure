@@ -17,7 +17,7 @@ public class Game {
             Arrays.asList("Cafe Deux Magots","Savage Garden","Jade Garden","Trattoria Trussardi","Libeccio"));
     final ArrayList<String>residentialArea=new ArrayList<>(
             Arrays.asList("Polnareff Land","Morioh Grand Hotel","Joestar Mansion","Vineyard","San Giorgio Maggiore",
-                    "DIO's Mansion","Green Dolphin","Angelo Rock"));
+                    "DIO's Mansion","Green Dolphin Street Prison","Angelo Rock"));
     int dayNumber=0;
     String day;
     
