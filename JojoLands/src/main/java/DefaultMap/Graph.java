@@ -73,7 +73,11 @@ public class Graph<T extends Comparable<T>, N extends Comparable <N>> extends Ga
    public boolean addVertex(T v)	{
       if (hasVertex(v)==false)	{
          Vertex<T,N> temp=head;
-         Vertex<T,N> newVertex = new Vertex<>(v, null);
+         Vertex<T,N>newVertex=null;
+         if(restaurant.contains(v))
+             newVertex=new Restaurant<>(v,null);
+         else if(!restaurant.contains(v))
+           newVertex = new Vertex<>(v, null);
          if (head==null)   
             head=newVertex;
          else {
@@ -279,15 +283,17 @@ public class Graph<T extends Comparable<T>, N extends Comparable <N>> extends Ga
        startNewDay();
        currentLocation=head;
        while(currentLocation!=null){
-            currentLocation.previous=previousLocation;
-            currentLocation.next=nextLocation;
-           
+           if(previousLocation!=null)
+               currentLocation.addOption("Back",(String) previousLocation.vertexInfo);
+           if(nextLocation!=null)
+               currentLocation.addOption("Forward",(String) nextLocation.vertexInfo);
+          
            //Show current Location and  select option
            currentLocation.printInfo();
            System.out.println("\nSelect: ");
            String a=sc.next();
            String userInput=currentLocation.nextMove(a);
-
+           currentLocation.removeOption();
            if(userInput.equals("Move to: "))
                explore(a);
                 
@@ -305,7 +311,13 @@ public class Graph<T extends Comparable<T>, N extends Comparable <N>> extends Ga
            
            else if(userInput.equals("Exit"))
                break;
-                         
+           
+           else if(userInput.equals("View Waiting List and Order Processing List"))
+               viewList();
+           
+           else if(userInput.equals("View Menu"))
+               viewMenu();
+           
        }
        list1.clear();//not sure have to clear route history anot
    }
@@ -351,7 +363,15 @@ public class Graph<T extends Comparable<T>, N extends Comparable <N>> extends Ga
          nextLocation=list2.get(list2.size()-1);
    }
    
-   public void reset(){
+   public void viewList(){
+       currentLocation.viewWaitingOrderProcessingList();
+   }
+   
+   public void viewMenu(){
+       currentLocation.viewMenu();
+   }
+   
+    public void reset(){
        currentLocation=head;
        nextLocation=null;
        previousLocation=null;
@@ -364,5 +384,7 @@ public class Graph<T extends Comparable<T>, N extends Comparable <N>> extends Ga
        reset();
        System.out.println("It's Day "+dayNumber+" ("+day+") of our journey in JOJOLands!");
    }
+   
+   
    
 }

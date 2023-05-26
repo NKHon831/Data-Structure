@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  * @author Asus
  */
-public class Vertex<T extends Comparable<T>, N extends Comparable <N>> {   
+public class Vertex<T extends Comparable<T>, N extends Comparable <N>> extends Game{   
     Scanner sc=new Scanner(System.in);
     ArrayList<OptionClass>option=new ArrayList<>();
     T vertexInfo;
@@ -18,8 +18,6 @@ public class Vertex<T extends Comparable<T>, N extends Comparable <N>> {
     int outdeg;
     Vertex<T,N> nextVertex;
     Edge<T,N> firstEdge;
-    Vertex<T,N>previous;
-    Vertex<T,N>next;
     
     public Vertex() {
         this(null, null);
@@ -35,12 +33,6 @@ public class Vertex<T extends Comparable<T>, N extends Comparable <N>> {
     }
   
     public void printInfo(){
-        //add option back and forward if they are not null
-        if(previous!=null)
-            option.add(new OptionClass("Back",previous.vertexInfo));
-        if(next!=null)
-            option.add(new OptionClass("Forward",next.vertexInfo));
-        
         System.out.println("Current Location: "+vertexInfo);
         //iterate through all options and print them out
         for(int i=1;i<=option.size();i++){
@@ -61,9 +53,7 @@ public class Vertex<T extends Comparable<T>, N extends Comparable <N>> {
     public String nextMove(String input){
         System.out.println(String.valueOf('=').repeat(100));
         int temp=Character.getNumericValue(input.charAt(0))-1;
-        String hold=String.valueOf(option.get(temp).option);
-        removeOption();
-        return hold;
+        return String.valueOf(option.get(temp).option);
     }
    
     public void basicOption(){
@@ -78,7 +68,7 @@ public class Vertex<T extends Comparable<T>, N extends Comparable <N>> {
         
     }
     
-    public void addOption(String newOption, String description){
+    public void addOption(String newOption,String description){
         option.add(new OptionClass(newOption,description));
     }
     
@@ -93,6 +83,14 @@ public class Vertex<T extends Comparable<T>, N extends Comparable <N>> {
         }
         option.remove(back);
         option.remove(forward);
+    }
+    
+    public void viewWaitingOrderProcessingList(){
+        
+    }
+    
+    public void viewMenu(){
+        
     }
     
 }

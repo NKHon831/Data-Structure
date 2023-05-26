@@ -4,12 +4,17 @@
  */
 package DefaultMap;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  *
  * @author Asus
  */
 public class Game {
-    String []days={"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
+    final String []days={"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};  
+    final ArrayList<String>restaurant=new ArrayList<>(
+            Arrays.asList("Cafe Deux Magots","Savage Garden","Jade Garden","Trattoria Trussardi","Libeccio"));
     int dayNumber=0;
     String day;
     
@@ -22,4 +27,5 @@ public class Game {
        day=days[(dayNumber-1)%7];
         
     }
+    
 }
