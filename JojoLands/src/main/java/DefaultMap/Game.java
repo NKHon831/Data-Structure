@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 /**
  *
- * @author Asus
+ * @author Asus  
  */
 public class Game {
     final String []days={"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};  
