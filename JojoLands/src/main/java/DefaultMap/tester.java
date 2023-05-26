@@ -4,14 +4,15 @@
  */
 package DefaultMap;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Asus
  */
-
 public class tester {
     public static void main(String[] args) {
-        CreateMap map=new CreateMap();
-        
+        CreateMap map=new CreateMap();//create map and start to move
+            
     }
 }

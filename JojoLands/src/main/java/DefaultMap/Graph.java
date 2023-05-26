@@ -74,10 +74,12 @@ public class Graph<T extends Comparable<T>, N extends Comparable <N>> extends Ga
       if (hasVertex(v)==false)	{
          Vertex<T,N> temp=head;
          Vertex<T,N>newVertex=null;
-         if(restaurant.contains(v))
-             newVertex=new Restaurant<>(v,null);
-         else if(!restaurant.contains(v))
-           newVertex = new Vertex<>(v, null);
+         if(restaurant.contains((String)v))
+             newVertex=new Restaurant<>(v,null);// create restaurant
+         else if(residentialArea.contains((String)v))
+             newVertex = new ResidentialArea<>(v, null);// create residential area
+         else
+             newVertex=new Vertex<>(v,null);//create Town Hall;
          if (head==null)   
             head=newVertex;
          else {
