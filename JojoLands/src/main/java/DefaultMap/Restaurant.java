@@ -25,6 +25,8 @@ public  class Restaurant<T extends Comparable<T>, N extends Comparable <N>> exte
     //for the use of Savage Garden
     public static Stack<Resident> stack1=new Stack<>();
     public static Stack<Resident> stack2=new Stack<>();
+    String tmp=String.format("+%-3s+%-30s+%-5s+%-8s+%-50s+",String.valueOf('-').repeat(3),String.valueOf('-').repeat(30),
+        String.valueOf('-').repeat(5),String.valueOf('-').repeat(8),String.valueOf('-').repeat(50));
     
     
     public Restaurant(){
@@ -36,7 +38,7 @@ public  class Restaurant<T extends Comparable<T>, N extends Comparable <N>> exte
     
     public Restaurant(T v , Vertex<T,N> w){
         super(v,w);
-        list.add(new Resident("NKH",20,"Male","Seremban","NSF","LYF"));//initialise for temporary test
+        list.add(new Resident("",0,"","","",""));//initialise for temporary test
         addCommonOption();
         processingList((String)vertexInfo);
     }
@@ -69,27 +71,27 @@ public  class Restaurant<T extends Comparable<T>, N extends Comparable <N>> exte
     //display the waiting list
     public void displayWaitingList(){
         System.out.println("Waiting List");
-        printLine(102);
+        System.out.println(tmp);
         System.out.printf("|%-3s|%-30s|%-5s|%-8s|%-50s|\n","No","Name","Age","Gender","Order");
-        printLine(102);
+        System.out.println(tmp);
         for(int i=0;i<list.size();i++){
             System.out.printf("|%-3d|",i+1);
             System.out.println(list.get(i));
         }
-        printLine(102);
+        System.out.println(tmp);
     }
 
     public void displayProcessingList(){
         Queue<Resident> temp=new LinkedList<>(queue);
         System.out.println("Order Processing List");
-        printLine(102);
+        System.out.println(tmp);
         System.out.printf("|%-3s|%-30s|%-5s|%-8s|%-50s|\n","No","Name","Age","Gender","Order");
-        printLine(102);
+        System.out.println(tmp);
         for(int i=0;i<list.size();i++){
             System.out.printf("|%-3d|",i+1);
             System.out.println(temp.poll());
         }
-        printLine(102);
+        System.out.println(tmp);
     
     }
     
@@ -112,16 +114,6 @@ public  class Restaurant<T extends Comparable<T>, N extends Comparable <N>> exte
         }
         System.out.printf("+%-40s+%-10s+\n",String.valueOf('-').repeat(40),String.valueOf('-').repeat(10));
        
-    }
-    
-    public  void printLine(int length){
-        for(int i=0;i<length;i++){
-            if(i==0||i==4||i==35||i==41||i==50||i==101)
-                System.out.print("+");
-            else
-               System.out.print("-");
-        }
-        System.out.println("");
     }
     
     public void JadeGarden() {
