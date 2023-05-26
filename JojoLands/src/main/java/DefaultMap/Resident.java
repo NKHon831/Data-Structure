@@ -12,28 +12,20 @@ public class Resident {
     private String name;
     private Integer age;
     private String gender;
-    private String order;
+    private String residentialArea;
+    private String parent1;
+    private String parent2;
     
-    
-    public Resident(String name,Integer age,String gender,String order){
+
+    public Resident(String name, Integer age, String gender, String residentialArea, String parent1,String parent2) {
         this.name=name;
         this.age=age;
         this.gender=gender;
-        this.order=order;
-    }
-    
-    public Resident(String name,Integer age,String order){
-        this(name,age,null,order);
-    }
-    
-    public Resident(String name,String gender,String order){
-        this(name,null,gender,order);
-    }
-    
-    public Resident(String name,String order){
-        this(name,null,null,order);
-    }
-    
+        this.residentialArea=residentialArea;
+        this.parent1=parent1;
+        this.parent2=parent2;
+    }   
+   
     public Integer getAge(){
         return age;
     }
@@ -44,7 +36,6 @@ public class Resident {
     
     @Override
     public String toString(){
-        return String.format("%-30s|%-5d|%-8s|%-50s|",name,age,gender,order);
+        return String.format("|%-30s|%-5s|%-10s|%-30s|%-20s|%-20s|",name,age,gender,residentialArea,parent1,parent2);
     }
-    
 }

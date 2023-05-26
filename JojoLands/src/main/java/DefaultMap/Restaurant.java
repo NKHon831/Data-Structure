@@ -17,7 +17,7 @@ import java.util.Stack;
  */
 public  class Restaurant<T extends Comparable<T>, N extends Comparable <N>> extends Vertex{ 
     //store waiting list
-    LinkedList<Resident> list=new LinkedList<>();
+    LinkedList<Resident>list=new LinkedList<>();
     
     //store order processing list
     Queue<Resident> queue=new LinkedList<>();
@@ -29,19 +29,23 @@ public  class Restaurant<T extends Comparable<T>, N extends Comparable <N>> exte
     
     public Restaurant(){
         super();
-        option.add(new OptionClass("View Menu"));
-        option.add(new OptionClass("View Waiting List and Order Processing List"));
-        option.add(new OptionClass("View Sales Information"));
-        option.add(new OptionClass("Milagro Man"));
+        list.add(new Resident("NKH",20,"Male","Seremban","NSF","LYF"));//initialise for temporary test
+        addCommonOption();
         processingList((String)vertexInfo);
     }
     
     public Restaurant(T v , Vertex<T,N> w){
         super(v,w);
-        option.add(new OptionClass("View Menu"));
-        option.add(new OptionClass("View Waiting List and Order Processing List"));
-        option.add(new OptionClass("View Sales Information"));
-        option.add(new OptionClass("Milagro Man"));
+        list.add(new Resident("NKH",20,"Male","Seremban","NSF","LYF"));//initialise for temporary test
+        addCommonOption();
+        processingList((String)vertexInfo);
+    }
+    
+    public void addCommonOption(){
+        option.add(option.size()-1,new OptionClass("View Menu"));
+        option.add(option.size()-1,new OptionClass("View Waiting List and Order Processing List"));
+        option.add(option.size()-1,new OptionClass("View Sales Information"));
+        option.add(option.size()-1,new OptionClass("Milagro Man"));
     }
     
     //Add the customer into a waiting list

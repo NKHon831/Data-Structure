@@ -15,10 +15,17 @@ public class Game {
     final String []days={"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};  
     final ArrayList<String>restaurant=new ArrayList<>(
             Arrays.asList("Cafe Deux Magots","Savage Garden","Jade Garden","Trattoria Trussardi","Libeccio"));
+    final ArrayList<String>residentialArea=new ArrayList<>(
+            Arrays.asList("Polnareff Land","Morioh Grand Hotel","Joestar Mansion","Vineyard","San Giorgio Maggiore",
+                    "DIO's Mansion","Green Dolphin","Angelo Rock"));
     int dayNumber=0;
     String day;
     
+    public ArrayList<Resident> residents=new ArrayList<>();
+    public ArrayList<Stand> stands=new ArrayList<>();
+    
     public Game(){
+        
     }
     
     
@@ -27,5 +34,6 @@ public class Game {
        day=days[(dayNumber-1)%7];
         
     }
+    
     
 }

@@ -69,7 +69,7 @@ public class Vertex<T extends Comparable<T>, N extends Comparable <N>> extends G
     }
     
     public void addOption(String newOption,String description){
-        option.add(new OptionClass(newOption,description));
+        option.add(option.size()-1,new OptionClass(newOption,description));
     }
     
     public void removeOption(){
